@@ -2,8 +2,7 @@
 
 # 加入while迴圈，讓使用者可以重複使用計算機，直到輸入n結束程式。
 while True:
-  
-    # 加入try-except來處理輸入錯誤，else區塊來處理運算，避免程式中斷。
+    # 加入try-except來處理輸入錯誤或錯誤，else區塊來處理運算，避免程式中斷。
     try:
       # 1.輸入第一個數字  
       # !重點:input()：接收輸入回傳字串，int()轉換整數，float()轉換浮點數
@@ -16,11 +15,10 @@ while True:
         num2 = float(input("請輸入第二個數字: ")) 
 
     except ValueError:
-        #print("輸入錯誤: 請輸入有效的數字!")
-        #continue  # 如果輸入錯誤，跳過本次迴圈，重新開始。
-        print("輸入錯誤: 計算機結束!")
-        break  # 如果輸入錯誤，結束程式。
-
+        print("輸入錯誤: 請輸入有效的數字!")
+        continue  # 如果輸入錯誤，跳過本次迴圈，重新開始。
+        # print("輸入錯誤: 計算機結束!")
+        # break  # 如果輸入錯誤，結束程式。
 
     else:
       # 4.根據運算符號進行計算  
@@ -49,14 +47,19 @@ while True:
         if result is not None: # 只有當 result 不是 None 時，才顯示計算結果。
           print("計算結果:", result)
 
-    # 0.詢問使用者是否要繼續使用計算機
-    answer = input("是否要繼續使用計算機? (y/n): ")
+    # 加入巢狀while迴圈，讓使用者可以重複使用計算機，直到輸入n結束程式。
+    while True:  
+        # 0.詢問使用者是否要繼續使用計算機
+        answer = input("是否要繼續使用計算機? (y/n): ")
+        if answer == "n":
+          break  #記得加上break，否則會無限迴圈下去。(內層while迴圈結束)
+        elif answer == "y":
+          break  # 如果使用者輸入y，繼續下一次迴圈。(內層while迴圈結束)
+        else:
+          print("輸入錯誤，請輸入 y 或 n！")
+          continue  # 如果使用者輸入其他字元，結束程式。
+
     if answer == "n":
-      break  #記得加上break，否則會無限迴圈下去。
-    elif answer == "y":
-       continue  # 如果使用者輸入y，繼續下一次迴圈。
-    else:
-      print("輸入錯誤: 請輸入y或n，程式將結束。")
-      break  # 如果使用者輸入其他字元，結束程式。
+        break  # 如果使用者輸入n，結束程式。(外層while迴圈結束)
 
 print("計算機結束，謝謝使用!")
