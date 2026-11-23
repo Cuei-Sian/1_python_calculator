@@ -63,7 +63,7 @@ while True:
     # 加入巢狀while迴圈，讓使用者可以重複使用計算機，直到輸入n結束程式。
     while True:  
         # 0.詢問使用者是否要繼續使用計算機
-        answer = input("是否要繼續使用計算機? (y/n): ")
+        answer = input("是否要繼續使用計算機? (y/n): ").lower()  # 將使用者輸入的字元轉換成小寫，避免大小寫問題。
         if answer == "n":
           break  #記得加上break，否則會無限迴圈下去。(內層while迴圈結束)
         elif answer == "y":
